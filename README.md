@@ -13,10 +13,11 @@ The game is structured into several JavaScript files:
 
 ## How to Play
 
-1. Open `index.html` in your browser.
-2. Press any key to start the game.
-3. Press any key to make the bird jump.
-4. Avoid the pipes and try to score as high as possible!
+1. Clone repository using `https://github.com/FluffyRudy/flappy-bird`
+2. Open `index.html` in your browser.
+3. Press space to start the game.
+4. Press space to make the bird jump.
+5. Avoid the pipes and try to score as high as possible!
 
 ## Game Features
 - Randomly picks background (day/night)
