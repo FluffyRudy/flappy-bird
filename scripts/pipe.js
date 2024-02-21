@@ -38,13 +38,11 @@ export class Pipe {
 
     drawPipe(context) {
         for (let pipe_ of Pipe.pipes) {
-            pipe_.image.onload = () => {
-                context.drawImage(
-                    pipe_.image, 
-                    pipe_.x, pipe_.y, 
-                    pipe_.width, pipe_.height
-                );
-            }
+            context.drawImage(
+                pipe_.image, 
+                pipe_.x, pipe_.y, 
+                pipe_.width, pipe_.height
+            );
         }
     }
 

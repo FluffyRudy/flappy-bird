@@ -35,9 +35,7 @@ export class Bird {
             this.frameIndex = (this.frameIndex + 1) % Bird.birdLength;
             this.prevTime = now;
         }
-        this.birdFrames[this.frameIndex].onload = () => {
-            context.drawImage(this.birdFrames[this.frameIndex], this.posX, this.posY);
-        }   
+        context.drawImage(this.birdFrames[this.frameIndex], this.posX, this.posY);
     }
     
     update() {
