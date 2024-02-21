@@ -116,24 +116,25 @@ class Game {
     }
 }
 
-const game = new Game();
-game.draw();
+window.onload = () => {
+    const game = new Game();
+    game.draw();
 
-document.addEventListener('keypress', (e) => {
-    if (!game.gamestart && (e.code === "Space" || e.key === " ") && !game.gameover) {
-        game.gamestart = true;
-        game.player.configurePosition();
-    }
-    else if (!game.keyDown && (e.code === "Space" || e.key === " ") && !game.gameover) {
-        game.keyDown = true;
-        game.player.flapUp();
-    } else if (game.gameover && (e.code === "Space" || e.key === " ")) {
-        game.resetAttributes();   
-    }
-})
+    document.addEventListener('keypress', (e) => {
+        if (!game.gamestart && (e.code === "Space" || e.key === " ") && !game.gameover) {
+            game.gamestart = true;
+            game.player.configurePosition();
+        } else if (!game.keyDown && (e.code === "Space" || e.key === " ") && !game.gameover) {
+            game.keyDown = true;
+            game.player.flapUp();
+        } else if (game.gameover && (e.code === "Space" || e.key === " ")) {
+            game.resetAttributes();   
+        }
+    })
 
-document.addEventListener("keyup", (e) => {
-    if (e.code === "Space" || e.key === " ") {
-        game.keyDown = false;
-    }
-})
+    document.addEventListener("keyup", (e) => {
+        if (e.code === "Space" || e.key === " ") {
+            game.keyDown = false;
+        }
+    })
+}
