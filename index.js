@@ -32,10 +32,12 @@ class Game {
     }
 
     draw() {
-        this.context.drawImage(
-            this.bg, 0, 0, 
-            this.canvas.width, this.canvas.height
-        );
+        this.bg.onload = () => {
+            this.context.drawImage(
+                this.bg, 0, 0, 
+                this.canvas.width, this.canvas.height
+            );
+        }
         if (!this.gamestart && !this.gameover) {
             this.context.drawImage(
                 message.welcome,
@@ -44,10 +46,8 @@ class Game {
                 message.welcome.width,
                 message.welcome.height 
             )
-            this.player.draw(this.context);
         } 
         else if (this.gameover) {
-            this.player.draw(this.context);
             this.pipe.drawPipe(this.context);
             this.context.drawImage(
                 message.gameOver,
@@ -66,6 +66,7 @@ class Game {
             }
             this.handleScoring();
         }
+        this.player.draw(this.context);
         requestAnimationFrame(this.draw);
     }
 
