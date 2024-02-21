@@ -22,7 +22,8 @@ export class Pipe {
             x: this.displaySurface.width,
             y: 0,
             width: Pipe.width,
-            height: height
+            height: height,
+            scoreCounted: false
         }
         const pipeDown = {
             image: pipe_[0],
@@ -30,6 +31,7 @@ export class Pipe {
             y: Pipe.gap + height,
             width: Pipe.width,
             height: this.displaySurface.height - (Pipe.gap + height),
+            scoreCounted: false
         }
         Pipe.pipes.push(pipeUp, pipeDown);
     }

@@ -14,5 +14,7 @@ body {
     color: #fff;
     width: 400px;
     min-height: 16px;
-    background-color: red;
+    align-self: center;
+    display: flex;
+    justify-content: center;
 }

@@ -1,6 +1,7 @@
 import { bg, randint } from "./scripts/settings.js";
 import { Bird } from "./scripts/player.js";
 import { Pipe } from "./scripts/pipe.js";
+import { scores } from "./scripts/settings.js";
 import { message } from "./scripts/settings.js";
 import { floor } from "./scripts/settings.js";
 
@@ -19,10 +20,15 @@ class Game {
         this.gamestart = false;
         this.gameover  = false;
         this.keyDown   = false;
-        Game.gameInstance = this;
+
+        this.score = 0;
+        this.scoreCells = document.querySelectorAll(".score-cell");
+        this.scoreCells[0].src = scores['0'];
 
         this.player = new Bird(this.canvas);
         this.pipe   = new Pipe(this.canvas);
+    
+        Game.gameInstance = this;
     }
 
     draw() {
@@ -57,7 +63,8 @@ class Game {
             if (this.detectCollision()) {
                 this.gameover = true;
                 this.gamestart = false;
-            } 
+            }
+            this.handleScoring();
         }
         requestAnimationFrame(this.draw);
     }
@@ -76,12 +83,35 @@ class Game {
         }
         return false;
     }
+
+    handleScoring() {
+        const allPipes = this.pipe.getPipes();
+        for (let pipe_ of allPipes) {
+            if (this.player.posX > pipe_.x + pipe_.width && !pipe_.scoreCounted) {
+                this.score++;
+                pipe_.scoreCounted = true;
+                this.drawScore();
+            }            
+        }
+    }
+
+    drawScore() {
+        const strdScore = this.score.toString().split('');
+        strdScore.forEach((char, i) => {
+            this.scoreCells[i].src = scores[char];
+        })
+    }
     
     resetAttributes() {
         this.pipe.emptyPipes();
         this.player.resetAttributes();
         this.gamestart = false;
         this.gameover = false;
+        this.score = 0;
+        [...this.scoreCells].forEach(cell => {
+            cell.src = "";
+        })
+        this.scoreCells[0].src = scores['0'];
     }
 }
 
