@@ -113,6 +113,8 @@ class Game {
             cell.src = "";
         })
         this.scoreCells[0].src = scores['0'];
+        this.player = new Bird(this.canvas);
+        this.bg = bg[Object.keys(bg)[randint(0, bg.length)]];
     }
 }
 
