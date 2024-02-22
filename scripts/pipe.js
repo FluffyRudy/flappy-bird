@@ -19,7 +19,7 @@ export class Pipe {
         const pipe_   = pipe[Pipe.allPipes[randint(0, Pipe.pipeLength)]];
         const pipeUp = {
             image: pipe_[1],
-            x: this.displaySurface.width,
+            x: this.displaySurface.width+randint(0, Pipe.gap),
             y: 0,
             width: Pipe.width,
             height: height,
@@ -27,7 +27,7 @@ export class Pipe {
         }
         const pipeDown = {
             image: pipe_[0],
-            x: this.displaySurface.width,
+            x: this.displaySurface.width + randint(0, Pipe.gap),
             y: Pipe.gap + height,
             width: Pipe.width,
             height: this.displaySurface.height - (Pipe.gap + height),
