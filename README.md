@@ -9,7 +9,7 @@ The game is structured into several JavaScript files:
 - `settings.js`: Contains various game settings.
 - `player.js`: Defines the Bird class for the player.
 - `pipe.js`: Defines the Pipe class for the obstacles.
-- `game.js`: Contains the main game logic.
+- `index.js`: Contains the main game logic.
 
 ## How to Play
 
